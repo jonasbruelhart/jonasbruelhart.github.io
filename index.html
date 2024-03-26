@@ -6,12 +6,37 @@
     <title>String List</title>
 </head>
 <body>
-    <ul>
+    <ul id="stringList">
         <li>String 1</li>
         <li>String 2</li>
         <li>String 3</li>
         <li>String 4</li>
         <li>String 5</li>
     </ul>
+
+    <form id="add_item">
+        <input type="text" id="newItem" name="newItem" placeholder="Neues Element eingeben">
+        <button type="submit">Hinzufügen</button>
+    </form>
+
+    <script>
+        document.getElementById("add_item").addEventListener("submit", function(event) {
+            event.preventDefault(); // Verhindert das Standardverhalten des Formulars (Seite neu laden)
+
+            // Neue Element hinzufügen
+            var newItem = document.getElementById("newItem").value;
+            var list = document.getElementById("stringList");
+            var listItem = document.createElement("li");
+            listItem.textContent = newItem;
+            list.appendChild(listItem);
+
+            // Zurücksetzen des Formulars
+            document.getElementById("add_item").reset();
+
+            // Hier können Sie die Logik zum Speichern des neuen Elements auf dem Server hinzufügen
+            // Zum Beispiel: Senden einer AJAX-Anfrage an den Server, um das neue Element zu speichern
+            // Dies muss mit dem Server-Endpunkt übereinstimmen, der die POST-Anfragen verarbeitet
+        });
+    </script>
 </body>
 </html>
